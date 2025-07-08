@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('games', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('team1_id');
+            $table->unsignedBigInteger('team2_id');
+            $table->foreign('team1_id')->references('id')->on('teams');
+            $table->foreign('team2_id')->references('id')->on('teams');
+            $table->integer('team1-goals')->default(0);
+            $table->integer('team2-goals')->default(0);
+            $table->integer('week')->default(0);
+            $table->string('winner')->nullable();
             $table->timestamps();
         });
     }
