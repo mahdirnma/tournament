@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tournaments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('team_id')->constrained('teams')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('team_id')->constrained()->onDelete('cascade')->onUpdate('cascade');
             $table->integer('games_count')->default(0);
             $table->integer('goal_scored')->default(0);
             $table->integer('goal_conceded')->default(0);

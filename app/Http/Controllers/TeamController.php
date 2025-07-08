@@ -13,7 +13,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        //
+        $teams = Team::where('is_active',1)->paginate(5);
+        return view('team.index', compact('teams'));
     }
 
     /**

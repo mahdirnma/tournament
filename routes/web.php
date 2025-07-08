@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TournamentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[TeamController::class,'index'])->name('home');
+Route::post('/tournament/{team}/store',[TournamentController::class,'store'])->name('tournament.store');
