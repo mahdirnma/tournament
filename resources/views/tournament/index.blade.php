@@ -12,15 +12,102 @@
                 <table class="w-full min-h-full border border-gray-400">
                     <thead>
                     <tr class="h-12 border border-gray-400 border-b-2 border-b-gray-400">
-{{--
-                        <td class="text-center">add to tournament</td>
-                        <td class="text-center">description</td>
-                        <td class="text-center">title</td>
-                        <td class="text-center">id</td>
---}}
+                        <td class="text-center">first team</td>
+                        <td class="text-center">second team</td>
+                        <td class="text-center">game</td>
                     </tr>
                     </thead>
                     <tbody>
+                    @if($teams[0]->games_count==0)
+                        <form action="" method="post">
+                            @csrf
+                            <tr>
+                                <td class="text-center">
+                                    {{$teams[0]->team->title}}
+                                    <input type="number" name="{{$teams[0]->team_id}}" id="{{$teams[0]->team_id}}" min="0" max="15" class="border-1 pl-2 w-12 ml-20">
+                                </td>
+                                <td class="text-center">
+                                    <input type="number" name="{{$teams[3]->team_id}}" id="{{$teams[3]->team_id}}" min="0" max="15" class="border-1 pl-2 w-12 mr-20">
+                                    {{$teams[3]->team->title}}
+                                </td>
+                                <td class="text-red-500">
+                                    game 1
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    {{$teams[1]->team->title}}
+                                    <input type="number" name="{{$teams[1]->team_id}}" id="{{$teams[1]->team_id}}" min="0" max="15" class="border-1 pl-2 w-12 ml-20">
+                                </td>
+                                <td class="text-center">
+                                    <input type="number" name="{{$teams[2]->team_id}}" id="{{$teams[2]->team_id}}" min="0" max="15" class="border-1 pl-2 w-12 mr-20">
+                                    {{$teams[2]->team->title}}
+                                </td>
+                                <td class="text-red-500">
+                                    game 2
+                                </td>
+                            </tr>
+                        </form>
+                    @elseif($teams[0]->games_count==1)
+                        <form action="" method="post">
+                            @csrf
+                            <tr>
+                                <td class="text-center">
+                                    {{$teams[0]->team->title}}
+                                    <input type="number" name="{{$teams[0]->team_id}}" id="{{$teams[0]->team_id}}" min="0" max="15" class="border-1 pl-2 w-12 ml-20">
+                                </td>
+                                <td class="text-center">
+                                    <input type="number" name="{{$teams[2]->team_id}}" id="{{$teams[2]->team_id}}" min="0" max="15" class="border-1 pl-2 w-12 mr-20">
+                                    {{$teams[2]->team->title}}
+                                </td>
+                                <td class="text-red-500">
+                                    game 1
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    {{$teams[1]->team->title}}
+                                    <input type="number" name="{{$teams[1]->team_id}}" id="{{$teams[1]->team_id}}" min="0" max="15" class="border-1 pl-2 w-12 ml-20">
+                                </td>
+                                <td class="text-center">
+                                    <input type="number" name="{{$teams[3]->team_id}}" id="{{$teams[3]->team_id}}" min="0" max="15" class="border-1 pl-2 w-12 mr-20">
+                                    {{$teams[3]->team->title}}
+                                </td>
+                                <td class="text-red-500">
+                                    game 2
+                                </td>
+                            </tr>
+                        </form>
+                    @elseif($teams[0]->games_count==2)
+                        <form action="" method="post">
+                            @csrf
+                            <tr>
+                                <td class="text-center">
+                                    {{$teams[0]->team->title}}
+                                    <input type="number" name="{{$teams[0]->team_id}}" id="{{$teams[0]->team_id}}" min="0" max="15" class="border-1 pl-2 w-12 ml-20">
+                                </td>
+                                <td class="text-center">
+                                    <input type="number" name="{{$teams[1]->team_id}}" id="{{$teams[1]->team_id}}" min="0" max="15" class="border-1 pl-2 w-12 mr-20">
+                                    {{$teams[1]->team->title}}
+                                </td>
+                                <td class="text-red-500">
+                                    game 1
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center">
+                                    {{$teams[2]->team->title}}
+                                    <input type="number" name="{{$teams[2]->team_id}}" id="{{$teams[2]->team_id}}" min="0" max="15" class="border-1 pl-2 w-12 ml-20">
+                                </td>
+                                <td class="text-center">
+                                    <input type="number" name="{{$teams[3]->team_id}}" id="{{$teams[3]->team_id}}" min="0" max="15" class="border-1 pl-2 w-12 mr-20">
+                                    {{$teams[3]->team->title}}
+                                </td>
+                                <td class="text-red-500">
+                                    game 2
+                                </td>
+                            </tr>
+                        </form>                    @endif
                     </tbody>
                 </table>
             </div>

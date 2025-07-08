@@ -14,7 +14,8 @@ class TournamentController extends Controller
      */
     public function index()
     {
-        return view('tournament.index');
+        $teams = Tournament::all();
+        return view('tournament.index',compact('teams'));
     }
 
     /**
