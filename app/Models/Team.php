@@ -22,6 +22,13 @@ class Team extends Model
 
     public function teams()
     {
-        return $this->belongsToMany(Team::class);
+        return $this->belongsToMany(Team::class)
+            ->withPivot([
+                'team1-goals',
+                'team2-goals',
+                'week',
+                'winner'
+            ])
+            ->withTimestamps();
     }
 }
