@@ -22,7 +22,7 @@ class Team extends Model
 
     public function teams()
     {
-        return $this->belongsToMany(Team::class)
+        return $this->belongsToMany(Team::class,'teams_teams','team1_id','team2_id')
             ->withPivot([
                 'team1-goals',
                 'team2-goals',

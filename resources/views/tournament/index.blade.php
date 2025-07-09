@@ -19,7 +19,7 @@
                     </thead>
                     <tbody>
                     @if($teams[0]->games_count==0)
-                        <form action="" method="post">
+                        <form action="{{route('tournament.create')}}" method="post">
                             @csrf
                             <tr>
                                 <td class="text-center">
@@ -47,9 +47,10 @@
                                     game 2
                                 </td>
                             </tr>
+                            <button type="submit" class="w-20 border-2 border-b-cyan-700 mb-8 cursor-pointer">SET</button>
                         </form>
                     @elseif($teams[0]->games_count==1)
-                        <form action="" method="post">
+                        <form action="{{route('tournament.create')}}" method="post">
                             @csrf
                             <tr>
                                 <td class="text-center">
@@ -77,9 +78,10 @@
                                     game 2
                                 </td>
                             </tr>
+                            <button type="submit" class="w-20 border-2 border-b-cyan-700 mb-8 cursor-pointer">SET</button>
                         </form>
                     @elseif($teams[0]->games_count==2)
-                        <form action="" method="post">
+                        <form action="{{route('tournament.create')}}" method="post">
                             @csrf
                             <tr>
                                 <td class="text-center">
@@ -107,7 +109,9 @@
                                     game 2
                                 </td>
                             </tr>
-                        </form>                    @endif
+                            <button type="submit" class="w-20 border-2 border-b-cyan-700 mb-8 cursor-pointer">SET</button>
+                        </form>
+                    @endif
                     </tbody>
                 </table>
             </div>

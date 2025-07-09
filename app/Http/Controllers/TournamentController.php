@@ -6,6 +6,7 @@ use App\Models\Team;
 use App\Models\Tournament;
 use App\Http\Requests\StoreTournamentRequest;
 use App\Http\Requests\UpdateTournamentRequest;
+use http\Env\Request;
 
 class TournamentController extends Controller
 {
@@ -21,10 +22,6 @@ class TournamentController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,6 +32,23 @@ class TournamentController extends Controller
             'team_id'=>$team->id,
         ]);
         return redirect()->back();
+    }
+    public function create(StoreTournamentRequest $request)
+    {
+        $tournaments = Tournament::all();
+        $teams = Team::all();
+        $scores=[];
+        foreach ($tournaments as $tournament) {
+            $id=$tournament->team_id;
+            $scores[$tournament->team->title]=$request->$id;
+        }
+        if ($tournaments[0]->games==0) {
+            if ($scores['team 1']>$scores['team 4']){
+                $teams[1]->teams()->attach(0);
+            }elseif ($scores['team 1']<$scores['team 4']){
+                return 13;
+            }
+        }
     }
 
     /**
