@@ -82,4 +82,17 @@ class TournamentController extends Controller
     {
         //
     }
+
+    public function teams()
+    {
+        return Team::all();
+    }
+    public function attach()
+    {
+        return Team::find(1)->teams()->attach(2);
+    }
+    public function team1()
+    {
+        return Team::find(1)->teams;
+    }
 }

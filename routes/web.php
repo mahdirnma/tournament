@@ -23,3 +23,7 @@ Route::middleware('tournament.check')->group(function () {
     Route::post('/tournament/create',[TournamentController::class,'create'])->name('tournament.create');
 });
 
+Route::post('/tournament/create/test',[TournamentController::class,'create_test'])->name('tournament.create.test');
+Route::get('/teams',[TournamentController::class,'teams'])->name('teams.index');
+Route::get('/attach',[TournamentController::class,'attach'])->name('attach.index');
+Route::get('/team/1',[TournamentController::class,'team1'])->name('team1.index');
