@@ -44,7 +44,12 @@ class TournamentController extends Controller
         }
         if ($tournaments[0]->games==0) {
             if ($scores['team 1']>$scores['team 4']){
-                $teams[1]->teams()->attach(0);
+                $teams[1]->teams()->attach(3,[
+                    'team1-goals'=>7,
+                    'team2-goals'=>8,
+                    'week'=>2,
+                    'winner'=>3
+                ]);
             }elseif ($scores['team 1']<$scores['team 4']){
                 return 13;
             }

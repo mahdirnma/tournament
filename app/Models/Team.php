@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Team extends Model
 {
@@ -20,15 +21,14 @@ class Team extends Model
         return $this->hasOne(Tournament::class);
     }
 
-    public function teams()
+    public function teams() : BelongsToMany
     {
-        return $this->belongsToMany(Team::class,'teams_teams','team1_id','team2_id')
+        return $this->belongsToMany(Team::class,'team_team','team1_id','team2_id')
             ->withPivot([
                 'team1-goals',
                 'team2-goals',
                 'week',
                 'winner'
-            ])
-            ->withTimestamps();
+            ]);
     }
 }
